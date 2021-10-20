@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container_box
+            {
+                
+                background: rgb(255, 255, 255);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .inputbox
+
+            {
+                width: 650px;
+                
+                background: rgb(235, 63, 63);
+                
+
+            }
+
+            .outputbox
+            {
+                width: 620px;
+                height: 70vh;
+                margin-left: 700px;
+                background: rgb(146, 15, 15);
+                
+            }
+    </style>
+    
+</head>
+<body>
+    {% if user.is_authenticated%}
+    {% if message %}
+        <h1>{{message}}</h1>
+    {% endif %}
+    <div class="container">
+     <div class="inputbox">
+     
+        <form action = "{% url 'result' %}" method ="POST">
+            {% csrf_token %}
+            
+            <label ><h2>Input: </h2></label>
+            <input type = text placeholder = "Input" name = "input" >
+            <br><br>
+            <div>
+                <p><h2>Select Filtration Category: </h2></p>
+                <ul>
+                    <li>
+                        <label><h4>Filter out numbers from string greater than 100.</h4></label>
+                        <input type = "radio" value = "num" name = "category" id = "num"></li>
+                    <li>
+                        <label ><h4>Filter out date from string in yyyy-mm-dd format.</h4></label>
+                        <input type = "radio" value = "date" name = "category" id = "date"></li>
+                    <li>
+                        <label ><h4>Filter out string within single quotes in the given string.</h4></label>
+                        <input type = "radio" value = "quote" name = "category" id = "quote"></li>
+                    <li>
+                        <label ><h4>Validate IP address and determine class</h4></label>
+                        <input type = "radio" value = "ipadd" name = "category" id = "ipadd"></li>
+                    <li>
+                        <label ><h4>Validate MAC address.</h4></label>
+                        <input type = "radio" value = "macadd" name = "category" id = "macadd"></li>
+                    <li>
+                        <label ><h4>Convert CamelCase to snake_case.</h4></label>
+                        <input type = "radio" value = "snake" name = "category" id = "snake"></li>
+                </ul>
+            </div>
+            <input type = "submit">
+        </form>
+     </div>
+    
+        
+     <div class="outputbox">
+        <div>
+        <h2>Output: </h2>
+        {% if output %}
+            {% for out in output %}
+                <h3>{{out}}</h3>
+            {% endfor %}
+        {% endif %}
+        {% if addr %}
+            <h4>{{addr}}</h4>
+        {% endif %}
+        {% if class %}
+            <h4>{{class}}</h4>
+        {% endif %}
+        <br><br>
+        
+        {% else %}
+        <h1>login first</h1>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+               <h2> to login click here <a class="ml-2" href="{% url 'login' %}">login </a></h2>
+            </small>
+        </div>
+        
+        {% endif%}
+        </div>
+     </div>
+    </div> 
+
+</body>
+</html>

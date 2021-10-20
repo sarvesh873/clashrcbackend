@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags}}">
+                <h3>
+                 {{ message }}
+                </h3>
+            </div>
+        {% endfor %}
+    {% endif%}
+    
+     
+       
+
+
+    <hgroup>
+        {% if error %}
+        <h4>{{ error }}</h4>
+        {% endif %}
+    </hgroup>
+    <form method="POST">
+        {% csrf_token %}
+        <h2>sign up</h2>
+        
+        <h3 class="p"> Username : <input type="text" name="name" ></h3>
+      
+        
+        <h3 class="a">Enter Password:<input type="password" name="password1" id="word1"></h3>
+        
+        <button type="submit" class="c" name="submit" value="Login" >login </button>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+           <h3> dont have an account? <a class="ml-2" href="{% url 'signup' %}">sign up </a></h3>
+
+        </small>
+    </div>
+    
+    
+
+</body>
+
+</html>

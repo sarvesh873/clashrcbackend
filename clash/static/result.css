@@ -1,0 +1,29 @@
+.container_box
+{
+    width: 1720px;
+    height: 80vh;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+}
+
+.inputbox
+{
+    width: 750px;
+    height: 70vh;
+    background: rgb(212, 212, 212);
+    
+
+}
+
+.outputbox
+{
+    width: 720px;
+    height: 70vh;
+    margin-left: 100px;
+    background: rgb(212, 212, 212);
+    
+}

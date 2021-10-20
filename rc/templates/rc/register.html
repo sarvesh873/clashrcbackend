@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <hgroup>
+        {% if error %}
+        <h4>{{ error }}</h4>
+        {% endif %}
+    </hgroup>
+
+
+    <form method="POST">
+        {% csrf_token %}
+        
+
+        <h2>Sign Up</h2>
+        
+            
+        
+        <h3 class="p"> Username : <input type="text" name="username" , required></h3>
+        <h3 class="q"> Firstname : <input type="text" name="firstname" , required></h3>
+        <h3 class="r"> Lastname : <input type="text" name="lstname" , required></h3>
+        <h3 class="s">Email id:<input type="email" name="email" id="email" , required></h3>
+
+
+        <h3 class="x"> Enter a Phone Number : <input type="text" name="number" , required></h3>
+        <div class="y" >
+               <legend>
+                      <h3>Select Gender:</h3>
+               </legend>
+              <ul>
+              <li>Male<input type="radio" name="gender" id="Male" value="Male"></li>
+              <li>Female<input type="radio" name="gender" id="Female" value="Female"></li>
+              <li>Other<input type="radio" name="gender" id="Other" value="Other"></li>
+              </ul>
+        </div> 
+        
+        <h3 class="a">Enter Password:<input type="password" name="password1" id="password1" , required></h3>
+        <h3 class="b">Confirm Password:<input type="password" name="password2" id="password2" , required></h3>
+        
+        <button type="submit" class="c" name="submit" >Sign Up </button>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+           <h2> have an account <a class="ml-2" href="{% url 'login' %}">login </a></h2>
+        </small>
+    </div>
+    
+   
+</body>
+
+</html>
